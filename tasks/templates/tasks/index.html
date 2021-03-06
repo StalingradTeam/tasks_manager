@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Критерии информации{% endblock %}
+{% block main_content %}
+<a href={% url "tasks:datatime" %}>Дата, время:</a>
+
+  <h1>Критерии и значения</h1>
+  <ul>
+  {% for cat, todos_count in counts.items %}
+    <li><span class="badge badge-info">{{ cat }}: {{ todos_count }}</span></li>
+  {% empty %}
+    <li>Список целей пуст. Добавьте из панели-администратора</li>
+  {% endfor %}
+  </ul>
+  <h1>Цели по важности</h1>
+  {% for pr in priorites %}
+    <li><span class="badge badge-info">{{ pr }}</span></li>
+  {% empty %}
+    <li>Список целей по важности пуст. Добавьте из панели-администратора</li>
+  {% endfor %}
+  </ul>
+{% endblock %}
